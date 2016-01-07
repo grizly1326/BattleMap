@@ -3,12 +3,12 @@ package lesson;
 public class Main {
 
 	public static void main(String[] args) {
-		boolean ab=true;
-		Auto[] a= new Auto[10];
-		for(int i=0;i<10;i++){
-			System.out.println(a[i]);
+		int[] a= new int[10];
+		for(int cislo:a){
+			cislo=2;
+			System.out.println(cislo);
 		}
-		System.out.println(ab);
+		System.out.println(args[0]);
 	}
 
 }

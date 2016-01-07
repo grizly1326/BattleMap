@@ -3,6 +3,11 @@ package Ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main {
 
@@ -38,6 +43,19 @@ public class Main {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnServer = new JButton("Server");
+		btnServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnServer.setBounds(10, 228, 89, 23);
+		frame.getContentPane().add(btnServer);
+		
+		JTextPane txtpnServer = new JTextPane();
+		txtpnServer.setText("server: ");
+		txtpnServer.setBounds(224, 183, 200, 68);
+		frame.getContentPane().add(txtpnServer);
 	}
-
 }

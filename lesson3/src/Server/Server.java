@@ -1,26 +1,34 @@
 package Server;
 
-import java.io.Closeable;
+import java.io.IOException;
 import java.net.*;
 
 public class Server {
 	DatagramSocket socket;
+	DatagramPacket packet;
+	byte[] data= new byte[1024];
 	int port;
-	InetAddress address;
-	public void Server(int port,String adresa){
+	public Server(int port){
 		try {
 			this.port=port;
-			address.getByName(adresa);
-			socket= new DatagramSocket(this.port,this.address);
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-			System.out.println("Error: cannot get address.");
-		} catch (SocketException e) {
+			socket= new DatagramSocket(this.port);
+		}catch (SocketException e) {
 			e.printStackTrace();
 			System.out.println("Error: cannot create DatagramSocket.");
 		}
 	}
 	public void Stop(){
 		socket.close();
+	}
+	public void Listener(boolean run,String output){
+		while(run){
+			packet=new DatagramPacket(data,data.length);
+			try {
+				socket.receive(packet);
+			} catch (IOException e) {
+				System.out.println("Error: cannot insert packet into datagramSocket(....receiver).");
+			}
+			output=new String(packet.getData());
+		}
 	}
 }

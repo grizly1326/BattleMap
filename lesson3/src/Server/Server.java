@@ -21,6 +21,7 @@ public class Server {
 		socket.close();
 	}
 	public void Listener(boolean run,String output){
+		System.out.println("toggled");
 		while(run){
 			packet=new DatagramPacket(data,data.length);
 			try {
@@ -29,6 +30,7 @@ public class Server {
 				System.out.println("Error: cannot insert packet into datagramSocket(....receiver).");
 			}
 			output=new String(packet.getData());
+			System.out.println("Running: "+output);
 		}
 	}
 }

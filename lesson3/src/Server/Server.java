@@ -8,7 +8,10 @@ public class Server {
 	DatagramPacket packet;
 	byte[] data= new byte[1024];
 	int port;
-	public Server(int port){
+	public Server(){
+		
+	}
+	public void create(int port){
 		try {
 			this.port=port;
 			socket= new DatagramSocket(this.port);

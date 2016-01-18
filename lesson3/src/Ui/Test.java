@@ -3,16 +3,17 @@ package Ui;
 import javax.swing.*;
 
 import Server.Server;
+import Threads.ServerT;
+import configuration.Config;
 
 import java.awt.*;
 import java.awt.event.*;
 
-public class Main {
+public class Test {
 
 	public static void main(String[] args) {
 		//Threads
 		System.out.println("Number of threads: "+Thread.activeCount());
-		//ServerT a= new ServerT();			//uncomment
 		//JFrame
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -39,15 +40,27 @@ public class Main {
 		text.setText("EnterTextHere");
 		frame.add(text);
 		
+		JLabel info=new JLabel();
+		info.setBounds(10, 0, 100, 50);
+		info.setVisible(true);
+		info.setText("INFO:");
+		frame.add(info);
 		
 		//Listeners
 		server.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Thread t=new Thread(new ServerT(),"ServerThread");
-				t.start();
-				System.out.println("MAIN__Still running, Number of threads: "+Thread.activeCount());
-				
+				if(Config.ServerStatus){
+					Config.ServerStatus=false;
+					try {
+						Thread.sleep(Config.ServerSleep+500);				//added a bit of time to exit without error.
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+				}else{
+					Config.ServerStatus=true;
+					new Thread(new ServerT(),"ServerThread").start();
+				}
 			}
 		});
 		send.addActionListener(new ActionListener(){

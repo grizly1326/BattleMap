@@ -3,13 +3,15 @@ package Threads;
 import Server.Server;
 
 public class ServerT implements Runnable {
+	Server a= new Server();
+	
 	public ServerT(){
+		a.create(8888);
 	}
 	public void run(){
-		while(true){
-			Server a= new Server();
-			a.create(8888);
-			a.Listener(true,null);
-		}
+			System.out.println("Socket opend.");
+			a.Listener(null);
+			a.Stop();
+			System.out.println("Socket closed.");
 	}
 }

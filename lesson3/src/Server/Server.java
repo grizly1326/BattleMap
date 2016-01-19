@@ -22,7 +22,7 @@ public class Server {
 	public void Stop(){
 		socket.close();
 	}
-	public void Listener(String output){
+	public void Listener(){
 		try {
 			socket.setSoTimeout(Config.ServerSleep);						//socket timeout after some time, if not it would be stuck.
 		} catch (SocketException e1) {
@@ -35,7 +35,10 @@ public class Server {
 			} catch (IOException e) {
 				System.out.println("Error: cannot insert packet into datagramSocket(....receiver). Or timed out.");
 			}
-			output=new String(packet.getData());
+			Config.serverOutput=this.getString();
 		}
+	}
+	public String getString(){
+		return new String(packet.getData());
 	}
 }

@@ -10,7 +10,7 @@ public class ServerT implements Runnable {
 	}
 	public void run(){
 			System.out.println("Socket opend.");
-			a.Listener(null);
+			a.Listener();
 			a.Stop();
 			System.out.println("Socket closed.");
 	}

@@ -3,6 +3,7 @@ package Ui;
 import javax.swing.*;
 
 import Server.Server;
+import Threads.Repainting;
 import Threads.ServerT;
 import configuration.Config;
 
@@ -43,13 +44,14 @@ public class Test {
 		JLabel info=new JLabel();
 		info.setBounds(10, 0, 100, 50);
 		info.setVisible(true);
-		info.setText("INFO:");
+		info.setText("INFO:"+Config.serverOutput);
 		frame.add(info);
 		
 		//Listeners
 		server.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(Config.serverOutput);		//delete this after done testing.
 				if(Config.ServerStatus){
 					Config.ServerStatus=false;
 					try {
@@ -60,6 +62,7 @@ public class Test {
 				}else{
 					Config.ServerStatus=true;
 					new Thread(new ServerT(),"ServerThread").start();
+					new Thread(new Repainting(info),"Repainting").start();
 				}
 			}
 		});

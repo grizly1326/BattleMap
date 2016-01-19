@@ -12,9 +12,9 @@ public class Repainting implements Runnable {
 	}
 	public void run() {
 		while(Config.ServerStatus){
-			serverInfo.setText("INFO: "+Config.serverOutput);
+			serverInfo.setText("Server running: "+Config.serverOutput);
 		}
-		
+		serverInfo.setText("INFO: ");
 	}
 
 }

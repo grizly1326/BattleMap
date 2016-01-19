@@ -2,6 +2,7 @@ package Ui;
 
 import javax.swing.*;
 
+import Client.Client;
 import Server.Server;
 import Threads.Repainting;
 import Threads.ServerT;
@@ -14,7 +15,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		//Threads
-		System.out.println("Number of threads: "+Thread.activeCount());
+		System.out.println("Number of threads: "+Thread.activeCount());			//chcecking number of threads.
 		//JFrame
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -69,7 +70,10 @@ public class Test {
 		send.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				Client s= new Client();
+				s.newClient(Config.port, "localhost");
+				s.send(text.getText());
+				s.close();
 			}
 		});
 	}

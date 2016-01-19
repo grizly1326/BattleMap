@@ -9,14 +9,12 @@ public class Server {
 	DatagramSocket socket;
 	DatagramPacket packet;
 	byte[] data= new byte[1024];
-	int port;
 	public void create(int port){
 		try {
-			this.port=port;
-			socket= new DatagramSocket(this.port);
+			socket= new DatagramSocket(port);
 		}catch (SocketException e) {
 			e.printStackTrace();
-			System.out.println("Error: cannot create DatagramSocket.");
+			System.out.println("Error: cannot create Server datagramSocket.");
 		}
 	}
 	public void Stop(){
@@ -35,7 +33,10 @@ public class Server {
 			} catch (IOException e) {
 				System.out.println("Error: cannot insert packet into datagramSocket(....receiver). Or timed out.");
 			}
+			
 			Config.serverOutput=this.getString();
+			//System.out.println("received.");
+			System.out.println(packet.getData().toString()+packet.getAddress());
 		}
 	}
 	public String getString(){

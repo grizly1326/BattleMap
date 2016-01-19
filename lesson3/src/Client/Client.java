@@ -23,6 +23,7 @@ public class Client {
 	}
 	public void send(String s){
 		data=s.getBytes();
+		System.out.println(data.toString());
 		try {
 			packet= new DatagramPacket(data, data.length, InetAddress.getByName(address), port);
 		} catch (UnknownHostException e1) {

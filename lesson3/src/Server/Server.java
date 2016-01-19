@@ -33,13 +33,15 @@ public class Server {
 			} catch (IOException e) {
 				System.out.println("Error: cannot insert packet into datagramSocket(....receiver). Or timed out.");
 			}
-			
-			Config.serverOutput=this.getString();
-			//System.out.println("received.");
-			System.out.println(packet.getData().toString()+packet.getAddress());
+			if(packet.getAddress()!=null){									//checking if there is any message.
+				System.out.println("MESSAGE RECEIVED.");
+				System.out.println("INFO: "+this.getString());				//delete after testing.
+				Config.serverOutput=this.getString();
+			}
 		}
 	}
 	public String getString(){
-		return new String(packet.getData());
+		String a=new String(packet.getData());
+		return a.substring(0, packet.getLength());
 	}
 }

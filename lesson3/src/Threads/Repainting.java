@@ -16,5 +16,4 @@ public class Repainting implements Runnable {
 		}
 		serverInfo.setText("INFO: ");
 	}
-
 }

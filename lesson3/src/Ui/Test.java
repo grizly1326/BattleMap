@@ -43,7 +43,7 @@ public class Test {
 		frame.add(text);
 		
 		JLabel info=new JLabel();
-		info.setBounds(10, 0, 100, 50);
+		info.setBounds(10, 0, 1000, 50);
 		info.setVisible(true);
 		info.setText("INFO:"+Config.serverOutput);
 		frame.add(info);
@@ -54,6 +54,7 @@ public class Test {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(Config.serverOutput);		//delete this after done testing.
 				if(Config.ServerStatus){
+					server.setText("StartServer");
 					Config.ServerStatus=false;
 					try {
 						Thread.sleep(Config.ServerSleep+500);				//added a bit of time to exit without error.
@@ -61,6 +62,7 @@ public class Test {
 						e1.printStackTrace();
 					}
 				}else{
+					server.setText("CloseServer");
 					Config.ServerStatus=true;
 					new Thread(new ServerT(),"ServerThread").start();
 					new Thread(new Repainting(info),"Repainting").start();

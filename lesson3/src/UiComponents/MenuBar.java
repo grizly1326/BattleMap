@@ -8,12 +8,13 @@ import javax.swing.*;
 import Ui.Settings;
 
 public class MenuBar {
-	public static void ManuBar(JFrame frame){
+	public static void Bar(JFrame frame, Thread a){
 		//COMPONENTS
 		JMenuBar menuBar= new JMenuBar();
 		menuBar.setVisible(true);
 		JButton setting= new JButton("Settings");
-		menuBar.add(setting);
+		System.out.println(a.getName());
+		if(a.getName()!="menu")menuBar.add(setting);			//decideing where are you located, and showing components.
 		frame.setJMenuBar(menuBar);
 		
 		//LISTENERS
@@ -21,7 +22,6 @@ public class MenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Thread(new Settings(),"Settings").start();
-				System.out.println("clicked");
 				
 			}
 			

@@ -29,8 +29,8 @@ public class Test {
 		
 		//Components
 		
-		MenuBar.ManuBar(frame);						//menu bar insertion.
-		
+		MenuBar.Bar(frame,Thread.currentThread());						//menu bar insertion.
+		if(Thread.currentThread().getName()=="main")System.out.println(Thread.currentThread().getName());		//delete after testing.
 		JButton server= new JButton();
 		server.setBounds(150, 400, 150, 50);
 		server.setText("StartServer");

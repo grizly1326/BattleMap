@@ -3,9 +3,12 @@ package configuration;
 import Ui.Test;
 
 public class Config {
-	public static boolean ServerStatus=false;
-	public static int ServerSleep=1000;
+	//SERVER/CLIENT
+	public static boolean serverStatus=false;
+	public static int serverSleep=1000;
 	public static String serverOutput;
-	public static int port=8888;
-	public static boolean receivedMessage=false;
+	public static int Port=8888;
+	public static boolean updateVisuals=false;
+	
+	//OTHER
 }

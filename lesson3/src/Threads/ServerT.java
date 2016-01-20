@@ -1,12 +1,13 @@
 package Threads;
 
+import configuration.Config;
 import Server.Server;
 
 public class ServerT implements Runnable {
 	Server a= new Server();
 	
-	public ServerT(){
-		a.create(8888);
+	public ServerT(int port){
+		a.create(port);
 	}
 	public void run(){
 			System.out.println("Socket opend.");

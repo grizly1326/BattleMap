@@ -1,21 +1,24 @@
 package Ui;
 
+//importing UI elements
 import javax.swing.*;
-
-import Client.Client;
-import Server.Server;
-import Threads.Repainting;
-import Threads.ServerT;
-import configuration.Config;
 
 import java.awt.*;
 import java.awt.event.*;
 
+//importing grizlys packages
+import Client.Client;
+import Server.Server;
+import Threads.Repainting;
+import Threads.ServerT;
+import UiComponents.MenuBar;
+import configuration.Config;
+
+
+
 public class Test {
 
 	public static void main(String[] args) {
-		//Threads
-		System.out.println("Number of threads: "+Thread.activeCount());			//chcecking number of threads.
 		//JFrame
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -25,6 +28,9 @@ public class Test {
 		
 		
 		//Components
+		
+		MenuBar.ManuBar(frame);						//menu bar insertion.
+		
 		JButton server= new JButton();
 		server.setBounds(150, 400, 150, 50);
 		server.setText("StartServer");
@@ -52,19 +58,19 @@ public class Test {
 		server.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(Config.serverOutput);		//delete this after done testing.
-				if(Config.ServerStatus){
+				System.out.println(Config.serverOutput);					//delete this after done testing.
+				if(Config.serverStatus){									//switching between server open and close.
 					server.setText("StartServer");
-					Config.ServerStatus=false;
+					Config.serverStatus=false;
 					try {
-						Thread.sleep(Config.ServerSleep+500);				//added a bit of time to exit without error.
+						Thread.sleep(Config.serverSleep+500);				//added a bit of time to exit without error.
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
 				}else{
 					server.setText("CloseServer");
-					Config.ServerStatus=true;
-					new Thread(new ServerT(),"ServerThread").start();
+					Config.serverStatus=true;
+					new Thread(new ServerT(Config.Port),"ServerThread").start();
 					new Thread(new Repainting(info),"Repainting").start();
 				}
 			}
@@ -73,7 +79,7 @@ public class Test {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Client s= new Client();
-				s.newClient(Config.port, "localhost");
+				s.newClient(Config.Port, "localhost");
 				s.send(text.getText());
 				s.close();
 			}

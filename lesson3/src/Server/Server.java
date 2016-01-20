@@ -22,11 +22,11 @@ public class Server {
 	}
 	public void Listener(){
 		try {
-			socket.setSoTimeout(Config.ServerSleep);						//socket timeout after some time, if not it would be stuck.
+			socket.setSoTimeout(Config.serverSleep);						//socket timeout after some time, if not it would be stuck.
 		} catch (SocketException e1) {
 			e1.printStackTrace();
 		}
-		while(Config.ServerStatus){
+		while(Config.serverStatus){
 			packet=new DatagramPacket(data,data.length);
 			try {
 				socket.receive(packet);

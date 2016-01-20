@@ -11,7 +11,7 @@ public class Repainting implements Runnable {
 		serverInfo=a;
 	}
 	public void run() {
-		while(Config.ServerStatus){
+		while(Config.serverStatus){
 			serverInfo.setText("Server running: "+Config.serverOutput);
 		}
 		serverInfo.setText("INFO: ");

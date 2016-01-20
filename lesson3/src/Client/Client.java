@@ -38,4 +38,7 @@ public class Client {
 	public void close(){
 		socket.close();
 	}
+	public void findPlayer(){
+		
+	}
 }

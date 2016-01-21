@@ -13,8 +13,8 @@ public class MenuBar {
 		JMenuBar menuBar= new JMenuBar();
 		menuBar.setVisible(true);
 		JButton setting= new JButton("Settings");
-		System.out.println(a.getName());
-		if(a.getName()!="menu")menuBar.add(setting);			//decideing where are you located, and showing components.
+		//System.out.println(a.getName());
+		if(Thread.currentThread().getName().equals("main"))menuBar.add(setting);			//decideing where are you located, and showing components.
 		frame.setJMenuBar(menuBar);
 		
 		//LISTENERS

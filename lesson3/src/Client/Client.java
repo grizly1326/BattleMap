@@ -8,12 +8,8 @@ import configuration.Config;
 public class Client {
 	DatagramPacket packet;
 	DatagramSocket socket;
-	String address;
-	int port;
 	byte[] data;
-	public void newClient(int port, String adresa){
-		address=adresa;
-		this.port=port;
+	public void newClient(){
 		try {
 			socket= new DatagramSocket();
 		} catch (SocketException e) {
@@ -21,7 +17,7 @@ public class Client {
 			System.out.println("Error: Cannot create Client datagramSocket, please try again.");
 		}
 	}
-	public void send(String s){
+	public void send(String s, String address, int port){
 		data=s.getBytes();
 		System.out.println(data.toString());
 		try {
@@ -38,7 +34,7 @@ public class Client {
 	public void close(){
 		socket.close();
 	}
-	public void findPlayer(){
-		
+	public void findServer(String address, int port){
+		this.send(Config.securityString,address,port);
 	}
 }

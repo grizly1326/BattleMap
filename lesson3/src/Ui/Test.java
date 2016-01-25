@@ -31,7 +31,6 @@ public class Test {
 		
 		MenuBar.Bar(frame,Thread.currentThread());						//menu bar insertion.
 		System.out.println(Thread.currentThread().getName());
-		if(Thread.currentThread().getName().equals("main"))System.out.println("Helo");		//delete after testing.
 		JButton server= new JButton();
 		server.setBounds(150, 400, 150, 50);
 		server.setText("StartServer");
@@ -80,8 +79,9 @@ public class Test {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Client s= new Client();
-				s.newClient(Config.Port, "localhost");
-				s.send(text.getText());
+				s.newClient();
+				s.findServer("10.0.0.255", Config.Port);
+				//s.send(text.getText(),"localhost",Config.Port);
 				s.close();
 			}
 		});

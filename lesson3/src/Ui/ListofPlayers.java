@@ -3,7 +3,7 @@ package Ui;
 import javax.swing.JFrame;
 import UiComponents.MenuBar;
 
-public class Settings implements Runnable{
+public class ListofPlayers implements Runnable{
 	public void run() {
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -11,6 +11,7 @@ public class Settings implements Runnable{
 		frame.setLayout(null);
 		
 		MenuBar.Bar(frame,Thread.currentThread());
+		
 	}
-
+	
 }

@@ -35,7 +35,7 @@ public class Server {
 			}
 			if(packet.getAddress()!=null){									//checking if there is any message.
 				System.out.println("MESSAGE RECEIVED.");
-				System.out.println("INFO: "+this.getString());				//delete after testing.
+				System.out.println("INFO: "+this.getString()+" IP:"+packet.getAddress());				//delete after testing.
 				Config.serverOutput=this.getString();
 			}
 		}

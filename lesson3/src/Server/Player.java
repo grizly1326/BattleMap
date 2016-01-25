@@ -13,6 +13,12 @@ public class Player {
 	public void rename(String n){
 		name=n;
 	}
+	public String getName(){
+		return name;
+	}
+	public InetAddress getAddress(){
+		return address;
+	}
 	public void changeAddress(InetAddress a){
 		address=a;
 	}

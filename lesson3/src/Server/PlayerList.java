@@ -4,14 +4,30 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 
 public class PlayerList {
-	ArrayList<Player>a= new ArrayList<Player>();
-	public void add(Player player){
+	static ArrayList<Player>a= new ArrayList<Player>();
+	public static void add(Player player){
 		a.add(player);
 	}
-	public void delete(int index){
+	public static void delete(int index){
 		a.remove(index);
 	}
-	public int numberOfPlayers(){
+	public static boolean findByString(String name){
+		for(Player names:a){
+			if(names.getName().equals(name)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public static boolean findByAddress(InetAddress address){
+		for(Player names:a){
+			if(names.getAddress().equals(address)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public static int numberOfPlayers(){
 		return a.size();
 	}
 

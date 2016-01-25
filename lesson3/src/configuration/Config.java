@@ -11,4 +11,6 @@ public class Config {
 	public static boolean updateVisuals=false;
 	
 	//OTHER
+	public static String securityString="player";
+	public static String nameOfPlayer="grizly1326";
 }

@@ -13,12 +13,15 @@ import Threads.Repainting;
 import Threads.ServerT;
 import UiComponents.MenuBar;
 import configuration.Config;
+import configuration.Initialize;
 
 
 
 public class Test {
 
 	public static void main(String[] args) {
+		//calling PreInit.
+		Initialize.preInit();
 		//JFrame
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -80,7 +83,7 @@ public class Test {
 			public void actionPerformed(ActionEvent arg0) {
 				Client s= new Client();
 				s.newClient();
-				s.findServer("10.0.0.255", Config.Port);
+				s.findServer("10.0.0.255", Config.Port);					//broadcast to the whole network.
 				//s.send(text.getText(),"localhost",Config.Port);
 				s.close();
 			}

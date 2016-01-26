@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.*;
 
 import configuration.Config;
+import configuration.PacketType;
 
 public class Client {
 	DatagramPacket packet;
@@ -17,7 +18,7 @@ public class Client {
 			System.out.println("Error: Cannot create Client datagramSocket, please try again.");
 		}
 	}
-	public void send(String s, String address, int port){
+	private void send(String s, String address, int port){
 		data=s.getBytes();
 		System.out.println(data.toString());
 		try {
@@ -35,6 +36,9 @@ public class Client {
 		socket.close();
 	}
 	public void findServer(String address, int port){
-		this.send(Config.securityString,address,port);
+		this.send(PacketType.getString(0)+"//"+Config.securityString,address,port);
+	}
+	public void sendMessage(String string,String address, int port){
+		this.send(PacketType.getString(1)+"//"+string, address, port);
 	}
 }

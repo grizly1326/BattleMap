@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.*;
 
 import configuration.Config;
+import configuration.PacketType;
 
 public class Server {
 	DatagramSocket socket;
@@ -36,12 +37,22 @@ public class Server {
 			if(packet.getAddress()!=null){									//checking if there is any message.
 				System.out.println("MESSAGE RECEIVED.");
 				System.out.println("INFO: "+this.getString()+" IP:"+packet.getAddress());				//delete after testing.
-				Config.serverOutput=this.getString();
+				this.switchPacket(this.getString());							//make switching statement that decides what packet it is.
 			}
 		}
 	}
-	public String getString(){
+	private String getString(){
 		String a=new String(packet.getData());
 		return a.substring(0, packet.getLength());
+	}
+	private void switchPacket(String string){
+		String[] split=string.split("//");
+		if(PacketType.getString(0).equals(split[0])){
+			System.out.println("ONE: "+PacketType.getString(0));						//delete after testing.
+		}
+		if(PacketType.getString(1).equals(split[0])){
+			Config.serverOutput=split[1];
+			System.out.println("TWO: "+PacketType.getString(1));						//delete after testing.
+		}
 	}
 }

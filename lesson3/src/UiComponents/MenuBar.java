@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Ui.ListofPlayers;
 import Ui.Settings;
 
 public class MenuBar {
@@ -14,7 +15,7 @@ public class MenuBar {
 		menuBar.setVisible(true);
 		JButton setting= new JButton("Settings");
 		JButton list= new JButton("List");
-		if(Thread.currentThread().getName().equals("main"))menuBar.add(setting);			//decideing where are you located, and showing components.
+		if(Thread.currentThread().getName().equals("main"))menuBar.add(setting);			//detecting where are you located, and showing components.
 		menuBar.add(list);
 		frame.setJMenuBar(menuBar);
 		
@@ -24,6 +25,12 @@ public class MenuBar {
 			public void actionPerformed(ActionEvent e) {
 				new Thread(new Settings(),"Settings").start();
 				
+			}
+			
+		});
+		list.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				new Thread(new ListofPlayers(),"ListofPlayers").start();;
 			}
 			
 		});

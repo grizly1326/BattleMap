@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 //importing grizlys packages
 import Client.Client;
+import Server.PlayerList;
 import Server.Server;
 import Threads.Repainting;
 import Threads.ServerT;
@@ -83,9 +84,12 @@ public class Test {
 			public void actionPerformed(ActionEvent arg0) {
 				Client s= new Client();
 				s.newClient();
-				s.findServer("10.0.0.255", Config.Port);					//broadcast to the whole network.
-				//s.send(text.getText(),"localhost",Config.Port);
+				//s.findServer("10.0.0.255", Config.Port);					//broadcast to the whole network.
+				s.sendMessage(text.getText(),"localhost",Config.Port);
 				s.close();
+				/*for(int i=0;i<PlayerList.numberOfPlayers();i++){			//find what is the problem.
+					System.out.println(PlayerList.findByIndex(i)+"\n");
+				}*/
 			}
 		});
 	}

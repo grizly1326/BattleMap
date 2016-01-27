@@ -39,6 +39,6 @@ public class Client {
 		this.send(PacketType.getString(0)+"//"+Config.securityString,address,port);
 	}
 	public void sendMessage(String string,String address, int port){
-		this.send(PacketType.getString(1)+"//"+string, address, port);
+		this.send(PacketType.getString(1)+"//"+Config.nameOfPlayer+"//"+string, address, port);
 	}
 }

@@ -11,6 +11,9 @@ public class PlayerList {
 	public static void delete(int index){
 		a.remove(index);
 	}
+	public static String findByIndex(int index){
+		return a.get(index).getName();
+	}
 	public static boolean findByString(String name){
 		for(Player names:a){
 			if(names.getName().equals(name)){
